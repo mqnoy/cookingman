@@ -1,0 +1,50 @@
+name: cookingman
+description: man's cook with anything.
+
+publish_to: 'none' 
+
+version: 0.0.0
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  async: ^2.6.1
+  camera: ^0.8.1+5
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  get_it: ^7.1.3
+  introduction_screen: ^2.1.0
+  provider: ^5.0.0
+  shared_preferences: ^2.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/fonts/
+    - assets/images/
+
+  fonts:
+    - family: Proxima Nova
+      fonts:
+        - asset: assets/fonts/ProximaNova-Regular.otf
+        - asset: assets/fonts/ProximaNova-Thin.otf
+        - asset: assets/fonts/ProximaNova-Semibold.otf
+
+    - family: Gorditas
+      fonts:
+        - asset: assets/fonts/Gorditas-Regular.ttf
+        - asset: assets/fonts/Gorditas-Bold.ttf
+    
+    - family: TTNorms
+      fonts:
+        - asset: assets/fonts/TTNorms-Regular.otf
+        - asset: assets/fonts/TTNorms-Italic.otf
+        - asset: assets/fonts/TTNorms-Bold.otf
