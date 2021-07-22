@@ -8,5 +8,5 @@ What you need before run this **GraphQL** is:
 
 And, to run :
 
-1. run `go run github.com/99designs/gqlgen generate .`
+1. run `go mod tidy` for download the depedency in go mod (in case you clone this project and and never download the dependencies in the file `go.mod`)
 2. run `go run cmd/main.go`
