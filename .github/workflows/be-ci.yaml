@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: ['1.16', '1.15']
+        go: ['1.16']
     defaults:
       run:
         shell: bash
@@ -29,13 +29,22 @@ jobs:
   lint:
     name: Golang-CI Lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.16']
     defaults:
       run:
         shell: bash
         working-directory: api
     steps:
       - uses: actions/checkout@v2.3.4
-      - name: Run linters
-        uses: golangci/golangci-lint-action@v2
+      - name: Go '1.16'
+        uses: actions/setup-go@v1
         with:
-          version: v1.29
+            go-version: ${{ matrix.go }}
+      - name: Setup golangci-lint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.29
+          echo ::add-path::$HOME/bin
+          echo ::add-path::$(go env GOPATH)/bin # for Go projects
+      - run: golangci-lint run
