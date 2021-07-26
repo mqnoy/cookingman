@@ -29,8 +29,6 @@ jobs:
   lint:
     name: Golang-CI Lint
     runs-on: ubuntu-latest
-    env:
-      GO111MODULE: off
     strategy:
       matrix:
         go: ['1.16']
@@ -39,15 +37,10 @@ jobs:
         shell: bash
         working-directory: api
     steps:
-      - uses: actions/checkout@v2
-      # - name: Go '1.16'
-      #   uses: actions/setup-go@v1
-      #   with:
-      #       go-version: ${{ matrix.go }}
-      # - name: Run go mod tidy
-      #   run: go get ./...
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
+      - uses: actions/checkout@v2.3.4
+      - name: tes
+        run: ls
+      - name: Run linters
+        uses: golangci/golangci-lint-action@v2.5.2
         with:
-          # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
-          version: v1.29
+          version: v1.28
