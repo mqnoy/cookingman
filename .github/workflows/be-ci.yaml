@@ -34,19 +34,19 @@ jobs:
     strategy:
       matrix:
         go: ['1.16']
-    defaults:
-      run:
-        shell: bash
-        working-directory: api
+    # defaults:
+    #   run:
+    #     shell: bash
+    #     working-directory: api
     steps:
       - uses: actions/checkout@v2
       - name: Go '1.16'
         uses: actions/setup-go@v1
         with:
             go-version: ${{ matrix.go }}
-      - name: golangci-lint
+      - name: Setup golangci-lint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.41.1
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.23.7
           echo ::add-path::$HOME/bin
           echo ::add-path::$(go env GOPATH)/bin # for Go projects
-      - run: golangci-lint run
+      - run: cd api && golangci-lint run
