@@ -29,6 +29,8 @@ jobs:
   lint:
     name: Golang-CI Lint
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     strategy:
       matrix:
         go: ['1.16']
