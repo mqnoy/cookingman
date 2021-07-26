@@ -44,7 +44,7 @@ jobs:
             go-version: ${{ matrix.go }}
       - name: Setup golangci-lint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.29
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.29.0
           echo ::add-path::$HOME/bin
           echo ::add-path::$(go env GOPATH)/bin # for Go projects
       - run: golangci-lint run
