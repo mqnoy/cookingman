@@ -1,0 +1,35 @@
+name: Backend - Golang Continous Integration
+on:
+  pull_request:
+    paths:
+      - "api/**"
+      - ".github/workflows/be-ci.yaml"
+
+jobs:
+  testing:
+    name: Go Testing
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.16', '1.15']
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@master
+      - name: Go '1.16'
+        uses: actions/setup-go@v1
+        with:
+            go-version: ${{ matrix.go }}
+      - name: Run test
+        run: |
+          cd api
+          go test -test.v -test.coverprofile=coverage.out -test.covermode=count ./...
+        
+  lint:
+    name: Golang-CI Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Run linters
+        uses: golangci/golangci-lint-action@v2.5.2
+        with:
+          version: v1.28
