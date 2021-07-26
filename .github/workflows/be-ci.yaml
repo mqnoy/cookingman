@@ -40,12 +40,12 @@ jobs:
         working-directory: api
     steps:
       - uses: actions/checkout@v2
-      - name: Go '1.16'
-        uses: actions/setup-go@v1
-        with:
-            go-version: ${{ matrix.go }}
-      - name: Run go mod tidy
-        run: go get ./...
+      # - name: Go '1.16'
+      #   uses: actions/setup-go@v1
+      #   with:
+      #       go-version: ${{ matrix.go }}
+      # - name: Run go mod tidy
+      #   run: go get ./...
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
