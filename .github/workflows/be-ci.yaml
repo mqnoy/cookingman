@@ -35,7 +35,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: api
+        working-directory: api/cmd
     steps:
       - uses: actions/checkout@v2
       - name: golangci-lint
