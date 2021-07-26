@@ -12,6 +12,10 @@ jobs:
     strategy:
       matrix:
         go: ['1.16', '1.15']
+    defaults:
+      run:
+        shell: bash
+        working-directory: api
     steps:
       - name: Checkout source code
         uses: actions/checkout@master
@@ -20,16 +24,18 @@ jobs:
         with:
             go-version: ${{ matrix.go }}
       - name: Run test
-        working-directory: ./api
         run: go test -test.v -test.coverprofile=coverage.out -test.covermode=count ./...
         
   lint:
     name: Golang-CI Lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: api
     steps:
       - uses: actions/checkout@v2.3.4
       - name: Run linters
         uses: golangci/golangci-lint-action@v2
-        working-directory: ./api
         with:
           version: v1.29
