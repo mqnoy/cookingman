@@ -29,6 +29,8 @@ jobs:
   lint:
     name: Golang-CI Lint
     runs-on: ubuntu-latest
+    env:
+      GO111MODULES: off
     strategy:
       matrix:
         go: ['1.16']
