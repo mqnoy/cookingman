@@ -26,7 +26,5 @@ jobs:
           channel: 'stable'
       - name: Run get
         run: flutter pub get
-      - name: Run test
-        run: flutter test
       - name: Run build
         run: flutter build apk
