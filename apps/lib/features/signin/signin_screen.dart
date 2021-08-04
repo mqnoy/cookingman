@@ -1,3 +1,6 @@
+import 'package:cookingman/data/grapql.dart';
+import 'package:cookingman/features/signin/signin_provider.dart';
+import 'package:cookingman/models/users_mod.dart';
 import 'package:cookingman/routing/routes.dart';
 import 'package:cookingman/service_locator.dart';
 import 'package:cookingman/services/navigation_service.dart';
@@ -13,6 +16,13 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  List<Users> users = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +143,20 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          //TODO: implement login mecanism
+                          sl<SignInProvider>().handleResult(
+                            await sl<SignInProvider>()
+                                .graphqlClient
+                                .populateUsers(),
+                          );
+
+                          users = sl<SignInProvider>().getCollectionUsers;
+                          setState(() {});
+                          users.forEach((element) {
+                            print(element.email);
+                          });
+                        },
                         child: Text("Login"),
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all<EdgeInsets>(

@@ -1,7 +1,7 @@
 name: cookingman
 description: man's cook with anything.
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 0.0.0
 
@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.0
   get_it: ^7.1.3
+  graphql: ^5.0.0
   introduction_screen: ^2.1.0
   provider: ^5.0.0
   shared_preferences: ^2.0.6
@@ -42,7 +43,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Gorditas-Regular.ttf
         - asset: assets/fonts/Gorditas-Bold.ttf
-    
+
     - family: TTNorms
       fonts:
         - asset: assets/fonts/TTNorms-Regular.otf

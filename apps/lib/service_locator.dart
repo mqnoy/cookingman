@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cookingman/data/api_repo.dart';
+import 'package:cookingman/data/grapql.dart';
 import 'package:cookingman/data/local_repository.dart';
 import 'package:cookingman/features/signin/signin_provider.dart';
 import 'package:cookingman/features/signup/signup_provider.dart';
@@ -7,7 +8,6 @@ import 'package:cookingman/services/navigation_service.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 /// sl: service locator
 final sl = GetIt.instance;
@@ -33,6 +33,13 @@ Future<void> initLocator() async {
   );
   sl.registerLazySingleton<Dio>(() => client);
 
+  // graphql
+  sl.registerLazySingleton<GraphQL>(
+    () => GraphQL(
+      baseURL: 'https://hasuragege.herokuapp.com/v1/graphql',
+    ),
+  );
+
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
@@ -40,4 +47,8 @@ Future<void> initLocator() async {
   sl.registerLazySingleton(() => SignUpProvider());
 
   sl.registerLazySingleton(() => NavigationService());
+
+  // GraphQl initiate
+  // sl.<GraphQL>.get
+  // _client = GraphQL('https://graphql.anilist.co').getClient();
 }
