@@ -1,4 +1,4 @@
-name: Mobile Apps - Flutter Continous Integration
+name: Mobile Apps - Flutter Continuous Integration
 on:
   pull_request:
     paths:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   testing:
-    name: Flutter testing and build
+    name: Flutter testing and build application
     runs-on: ubuntu-latest
     defaults:
       run:
