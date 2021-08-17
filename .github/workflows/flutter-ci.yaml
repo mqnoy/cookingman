@@ -7,7 +7,7 @@ on:
 
 jobs:
   testing:
-    name: Flutter testing and build
+    name: Flutter testing and build application
     runs-on: ubuntu-latest
     defaults:
       run:
